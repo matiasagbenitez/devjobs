@@ -17,10 +17,6 @@ class VacantController extends Controller
         return view('vacants.create');
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
 
     public function show($id)
     {
@@ -33,13 +29,4 @@ class VacantController extends Controller
         return view('vacants.edit', compact('vacant'));
     }
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
-    }
 }
