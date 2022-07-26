@@ -33,7 +33,7 @@
                 <select name="role" id="role" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full">
                     <option value="">Choose one...</option>
                     <option value="1">Developer - Find a job</option>
-                    <option value="1">Recruiter - Find an employee</option>
+                    <option value="2">Recruiter - Find an employee</option>
                 </select>
 
             </div>

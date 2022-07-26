@@ -12,7 +12,7 @@ class VacantPolicy
 
     public function viewAny(User $user)
     {
-        //
+        return $user->role === 2;
     }
 
     public function view(User $user, Vacant $vacant)
@@ -22,7 +22,7 @@ class VacantPolicy
 
     public function create(User $user)
     {
-        //
+        return $user->role === 2;
     }
 
     public function update(User $user, Vacant $vacant)

@@ -9,18 +9,20 @@ class VacantController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny', Vacant::class);
         return view('vacants.index');
     }
 
     public function create()
     {
+        $this->authorize('create', Vacant::class);
         return view('vacants.create');
     }
 
 
-    public function show($id)
+    public function show(Vacant $vacant)
     {
-        //
+        return view('vacants.show', compact('vacant'));
     }
 
     public function edit(Vacant $vacant)
