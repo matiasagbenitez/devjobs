@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\VacantController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +23,7 @@ Route::get('/dashboard', [VacantController::class, 'index'])->middleware(['auth'
 Route::get('/vacants/create', [VacantController::class, 'create'])->middleware(['auth', 'verified'])->name('vacants.create');
 Route::get('/vacants/{vacant}/edit', [VacantController::class, 'edit'])->middleware(['auth', 'verified'])->name('vacants.edit');
 Route::get('/vacants/{vacant}', [VacantController::class, 'show'])->name('vacants.show');
+
+Route::get('/notifications', NotificationController::class)->name('notifications');
 
 require __DIR__.'/auth.php';

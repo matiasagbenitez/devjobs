@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Vacant;
+use App\Notifications\NewCandidate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -36,6 +37,7 @@ class ApplyVacant extends Component
         ]);
 
         // Crear notificación y enviar email
+        $this->vacant->recruiter->notify(new NewCandidate($this->vacant->id, $this->vacant->title, auth()->user()->id));
 
         // Mostrar al usuario un mensaje de OK
         session()->flash('mensaje', 'Your information was sent successfully. Good luck!');

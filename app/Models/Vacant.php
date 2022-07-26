@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Salary;
 use App\Models\Category;
 use App\Models\Candidate;
@@ -38,5 +39,10 @@ class Vacant extends Model
     public function candidates()
     {
         return $this->hasMany(Candidate::class);
+    }
+
+    public function recruiter()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
