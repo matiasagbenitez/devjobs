@@ -11,15 +11,17 @@
                 </div>
 
                 @auth
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
-                            {{ __('My vacants') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
-                            {{ __('Create vacant') }}
-                        </x-nav-link>
-                    </div>
+                    @can('create', \App\Models\Vacant::class)
+                        <!-- Navigation Links -->
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
+                                {{ __('My vacants') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
+                                {{ __('Create vacant') }}
+                            </x-nav-link>
+                        </div>
+                    @endcan
                 @endauth
 
             </div>
@@ -28,12 +30,12 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @auth
 
-                    @if (auth()->user()->role === 2)
+                    @can('create', \App\Models\Vacant::class)
                         <a class="mr-2 w-7 h-7 bg-indigo-600 hover:bg-indigo-800 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white"
                             href="{{ route('notifications')}}">
                             {{ Auth::user()->unreadNotifications->count() }}
                         </a>
-                    @endif
+                    @endcan
 
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">

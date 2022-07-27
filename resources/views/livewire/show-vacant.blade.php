@@ -10,7 +10,7 @@
                 <p class="text-sm text-gray-500">Last day to apply: {{ $vacant->last_day->format('d/m/Y') }}</p>
             </div>
             <div class="flex flex-col md:flex-row text-center gap-3 md:items-center mt-5 md:mt-0">
-                <a href="#" class="bg-slate-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase">Candidates</a>
+                <a href="{{ route('canidates.index', $vacant)}}" class="bg-slate-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase">{{$vacant->candidates->count()}} candidates</a>
                 <a href="{{ route('vacants.edit', $vacant->id) }}" class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase">Edit</a>
                 <button wire:click="$emit('showAlert', {{ $vacant->id }})" class="bg-red-600 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase">Delete</button>
             </div>

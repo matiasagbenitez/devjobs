@@ -12,25 +12,27 @@
 
                     <h1 class="text-2xl font-bold text-center mb-5">Notifications</h1>
 
-                    @forelse ($notifications as $notification)
-                        <div class="p-5 border border-gray-200 md:flex md:justify-between md:items-center">
-                            <div>
-                                <p>You have a new candidate on
-                                    <span class="font-bold">{{ $notification->data['name_vacant'] }}</span>
-                                </p>
+                    <div class="divide-y divide-gray-200">
+                        @forelse ($notifications as $notification)
+                            <div class="p-5md:flex md:justify-between md:items-center">
+                                <div>
+                                    <p>You have a new candidate on
+                                        <span class="font-bold">{{ $notification->data['name_vacant'] }}</span>
+                                    </p>
 
-                                <p>
-                                    <span class="text-gray-600 text-sm">{{ $notification->created_at->diffForHumans() }}</span>
-                                </p>
-                            </div>
+                                    <p>
+                                        <span class="text-gray-600 text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                                    </p>
+                                </div>
 
-                            <div class="mt-5 md:mt-0">
-                                <a href="#" class="bg-indigo-600 p-3 text-sm uppercase font-bold text-white rounded-lg">See candidates</a>
+                                <div class="mt-5 md:mt-0">
+                                    <a href="{{ route('canidates.index', $notification->data['id_vacant']) }}" class="bg-indigo-600 p-3 text-sm uppercase font-bold text-white rounded-lg">Candidates</a>
+                                </div>
                             </div>
-                        </div>
-                    @empty
-                        <p class="text-center text-gray-600">You have no notifications!</p>
-                    @endforelse
+                        @empty
+                            <p class="text-center text-gray-600">You have no notifications!</p>
+                        @endforelse
+                    </div>
 
                 </div>
             </div>
